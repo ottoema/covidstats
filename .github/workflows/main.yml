@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.7, 3.8]
+        python-version: [3.8]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -32,9 +32,8 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
+      - name: Run the script to generate the visualizations
+        run: python covid_deaths_vs_population_density.py
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
