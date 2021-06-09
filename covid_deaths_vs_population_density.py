@@ -61,6 +61,7 @@ def plot_continent(df, continent):
     top_hist.get_xaxis().set_visible(False)
     right_hist.get_yaxis().set_visible(False)
     top_hist.get_yaxis().set_visible(False)
+    scatter.get_legend().remove()
     plt.gcf().suptitle("{}\nCovid-19 deaths per million vs. population density\nwith distributions".format(continent))
 
     for ax in plt.gcf().get_axes():
