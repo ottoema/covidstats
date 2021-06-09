@@ -50,8 +50,8 @@ def plot_continent(df, continent):
                     ax=scatter,
                     alpha=0.7,
                     s=30,
-    #                size='Population',
-    #                sizes=(20,800),
+                    size='Population',
+                    sizes=(20,800),
                     legend='brief')
 
     # scatter.legend(bbox_to_anchor=(1.4,1.5),frameon=False)
