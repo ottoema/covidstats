@@ -39,8 +39,10 @@ jobs:
       - name: Run the script to generate the visualizations
         run: python covid_deaths_vs_population_density.py
 
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+      - name: Upload out folder
+        uses: actions/upload-artifact@v2
+        with:
+          name: visualiations
+          path: out/
+        # Use always() to always run this step to publish test results when there are test failures
+        if: ${{ always() }}
