@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import requests, re
 import seaborn as sns
 import matplotlib.gridspec as gridspec
+import os   
 
 import_popdens_df = pd.read_csv('data/API_EN.POP.DNST_DS2_en_csv_v2_2446063/API_EN.POP.DNST_DS2_en_csv_v2_2446063.csv', skiprows=4)
 year = '2018'
@@ -53,7 +54,7 @@ def plot_continent(df, continent):
     #                sizes=(20,800),
                     legend='brief')
 
-    scatter.legend(bbox_to_anchor=(1.4,1.5),frameon=False)
+    # scatter.legend(bbox_to_anchor=(1.4,1.5),frameon=False)
 
 
     right_hist.get_xaxis().set_visible(False)
@@ -67,9 +68,16 @@ def plot_continent(df, continent):
         ax.spines['top'].set_visible(False)
         ax.spines['left'].set_visible(False)
         ax.spines['bottom'].set_visible(False)
-        
-    plt.savefig('covid19_deaths_per_million_vs_pop_dens_{}.png'.format(continent.replace("/","-")))
-   
+    
+    dir_name = './out/'
+    file_name = 'covid19_deaths_per_million_vs_pop_dens_{}.png'.format(continent.replace("/","-"))
+
+    if not os.path.exists(dir_name):
+        os.makedirs(dir_name)
+
+    plt.savefig(dir_name + file_name)
+    print("Saved: {}".format(dir_name + file_name))
+
 continent_order=['Africa','Asia','Australia/Oceania','Europe','North America','South America']
 for continent in continent_order:
     plot_continent(df,continent)
